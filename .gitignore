@@ -1,0 +1,12 @@
+# Node / build
+node_modules/
+dist/
+resume/node_modules/
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Временные файлы Office
+~$*

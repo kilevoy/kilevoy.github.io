@@ -3,6 +3,7 @@ node_modules/
 dist/
 resume/node_modules/
 *.local
+*.tsbuildinfo
 
 # OS
 .DS_Store

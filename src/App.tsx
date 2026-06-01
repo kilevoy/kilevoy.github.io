@@ -215,11 +215,11 @@ function Resume() {
           ))}
         </ul>
         <div className="resume-actions">
-          <a className="btn primary" href={profile.resumePdf} download>
-            ↓ Скачать резюме (PDF)
+          <a className="btn primary" href="resume.html" target="_blank" rel="noreferrer">
+            Открыть резюме →
           </a>
-          <a className="btn ghost" href={profile.resumePdf} target="_blank" rel="noreferrer">
-            Открыть в браузере
+          <a className="btn ghost" href={profile.resumePdf} download>
+            Скачать PDF
           </a>
         </div>
       </div>

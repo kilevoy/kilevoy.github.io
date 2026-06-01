@@ -1,5 +1,28 @@
-import { useState } from "react";
-import { profile, cases, skills, type Case } from "./data";
+import { useState, useEffect } from "react";
+import { profile, cases, skills, highlights, type Case } from "./data";
+
+function ThemeToggle() {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    const saved = localStorage.getItem("theme");
+    return saved === "dark" ? "dark" : "light"; // дефолт — светлая
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  return (
+    <button
+      className="theme-toggle"
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      title={theme === "light" ? "Тёмная тема" : "Светлая тема"}
+      aria-label="Переключить тему"
+    >
+      {theme === "light" ? "🌙" : "☀️"}
+    </button>
+  );
+}
 
 export default function App() {
   return (
@@ -8,6 +31,7 @@ export default function App() {
       <Hero />
       <Cases />
       <About />
+      <Resume />
       <Contact />
       <Footer />
     </div>
@@ -23,10 +47,12 @@ function Nav() {
       <div className="nav-links">
         <a href="#cases">Кейсы</a>
         <a href="#about">Обо мне</a>
+        <a href="#resume">Резюме</a>
         <a href="#contact">Контакты</a>
         <a href={profile.github} target="_blank" rel="noreferrer" className="nav-gh">
           GitHub
         </a>
+        <ThemeToggle />
       </div>
     </nav>
   );
@@ -168,6 +194,33 @@ function About() {
               </span>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Resume() {
+  return (
+    <section className="resume" id="resume">
+      <h2>Резюме</h2>
+      <p className="section-sub">
+        Коммерческий руководитель, который сам строит инструменты автоматизации.
+        Кратко — главное:
+      </p>
+      <div className="resume-card">
+        <ul className="resume-hl">
+          {highlights.map((h, i) => (
+            <li key={i}>{h}</li>
+          ))}
+        </ul>
+        <div className="resume-actions">
+          <a className="btn primary" href={profile.resumePdf} download>
+            ↓ Скачать резюме (PDF)
+          </a>
+          <a className="btn ghost" href={profile.resumePdf} target="_blank" rel="noreferrer">
+            Открыть в браузере
+          </a>
         </div>
       </div>
     </section>

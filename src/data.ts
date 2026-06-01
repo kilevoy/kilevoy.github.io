@@ -89,6 +89,16 @@ export const cases: Case[] = [
     status: "Готов",
   },
   {
+    title: "Калькулятор фасадных кассет",
+    category: "Калькуляторы",
+    outcome:
+      "Расчёт навесной фасадной системы из кассет (КФ-1…КФ-4): геометрия фасадов и проёмов, площади, комплектация и смета по прайсу из Excel.",
+    tech: ["TypeScript", "React", "Vite", "xlsx"],
+    demo: "https://kilevoy.github.io/fasad/",
+    code: "https://github.com/kilevoy/fasad",
+    status: "MVP",
+  },
+  {
     title: "Климатический атлас по СП",
     category: "Калькуляторы",
     outcome:

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { profile, cases, skills, highlights, type Case } from "./data";
+import { profile, cases, skills, type Case } from "./data";
 
 function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -31,7 +31,6 @@ export default function App() {
       <Hero />
       <Cases />
       <About />
-      <Resume />
       <Contact />
       <Footer />
     </div>
@@ -47,7 +46,7 @@ function Nav() {
       <div className="nav-links">
         <a href="#cases">Кейсы</a>
         <a href="#about">Обо мне</a>
-        <a href="#resume">Резюме</a>
+        <a href="resume.html" target="_blank" rel="noreferrer">Резюме</a>
         <a href="#contact">Контакты</a>
         <a href={profile.github} target="_blank" rel="noreferrer" className="nav-gh">
           GitHub
@@ -194,33 +193,6 @@ function About() {
               </span>
             ))}
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Resume() {
-  return (
-    <section className="resume" id="resume">
-      <h2>Резюме</h2>
-      <p className="section-sub">
-        Коммерческий руководитель, который сам строит инструменты автоматизации.
-        Кратко — главное:
-      </p>
-      <div className="resume-card">
-        <ul className="resume-hl">
-          {highlights.map((h, i) => (
-            <li key={i}>{h}</li>
-          ))}
-        </ul>
-        <div className="resume-actions">
-          <a className="btn primary" href="resume.html" target="_blank" rel="noreferrer">
-            Открыть резюме →
-          </a>
-          <a className="btn ghost" href="resume.pdf" download>
-            Скачать PDF
-          </a>
         </div>
       </div>
     </section>

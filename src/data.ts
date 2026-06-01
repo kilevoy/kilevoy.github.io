@@ -58,6 +58,17 @@ export const cases: Case[] = [
     flagship: true,
   },
   {
+    title: "AI-генератор коммерческих предложений",
+    category: "AI-автоматизация",
+    outcome:
+      "Данные об объекте → готовое КП за секунды: продающий оффер (AI), расчёт с НДС и условиями, в интерактивном веб-формате и PDF. Часы ручной работы в Word → минута.",
+    tech: ["Python", "LLM", "HTML-рендер", "pytest", "React"],
+    demo: "https://kilevoy.github.io/ai-proposal-generator/",
+    code: "https://github.com/kilevoy/ai-proposal-generator",
+    status: "MVP",
+    flagship: true,
+  },
+  {
     title: "B2B-дашборд продаж и склада",
     category: "Аналитика",
     outcome:

@@ -50,8 +50,10 @@ export const cases: Case[] = [
     title: "AI-аудитор договоров",
     category: "AI-автоматизация",
     outcome:
-      "Telegram-бот находит юридические риски в договоре за минуты вместо часов ручной вычитки — структурированный риск-отчёт.",
-    tech: ["n8n", "Telegram Bot API", "OpenRouter", "Markdown"],
+      "Загрузка договора → юридический риск-аудит с позиции твоей стороны: риск-скор, критичные риски и готовый протокол разногласий. Минуты вместо часов вычитки.",
+    tech: ["Python", "LLM", "pypdf / docx", "React", "n8n (прототип)"],
+    demo: "https://kilevoy.github.io/ai-contract-auditor/",
+    code: "https://github.com/kilevoy/ai-contract-auditor",
     status: "MVP",
     flagship: true,
   },

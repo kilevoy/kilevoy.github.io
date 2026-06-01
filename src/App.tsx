@@ -65,29 +65,6 @@ function Hero() {
         {profile.tagline.split("ИИ")[0]}
         <span className="grad">ИИ</span>
       </h1>
-      <p className="lead">{profile.subtitle}</p>
-      <div className="hero-cta">
-        <a className="btn primary" href="#cases">
-          Смотреть кейсы
-        </a>
-        <a className="btn ghost" href="#contact">
-          Связаться
-        </a>
-      </div>
-      <div className="hero-stats">
-        <div>
-          <b>26 лет</b>
-          <span>в B2B-коммерции</span>
-        </div>
-        <div>
-          <b>{cases.length}+</b>
-          <span>внедрённых решений</span>
-        </div>
-        <div>
-          <b>AI</b>
-          <span>агенты и пайплайны</span>
-        </div>
-      </div>
     </header>
   );
 }

@@ -218,7 +218,7 @@ function Resume() {
           <a className="btn primary" href="resume.html" target="_blank" rel="noreferrer">
             Открыть резюме →
           </a>
-          <a className="btn ghost" href={profile.resumePdf} download>
+          <a className="btn ghost" href="resume.pdf" download>
             Скачать PDF
           </a>
         </div>

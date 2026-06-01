@@ -105,7 +105,7 @@
     }
     .pill strong{color:var(--accent)}
     .photo-card{
-      align-self:start;
+      align-self:center;
       background:transparent;
       border:0;
       border-radius:0;
@@ -502,6 +502,9 @@
     </div>
   </div>
 
-  <div class="printbar"><button class="print-btn" onclick="window.print()">Печать / сохранить в PDF</button></div>
+  <div class="printbar">
+    <a class="print-btn" href="resume.pdf" download style="text-decoration:none;margin-right:10px;">↓ Скачать PDF</a>
+    <button class="print-btn" onclick="window.print()">Печать</button>
+  </div>
 </body>
 </html>

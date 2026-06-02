@@ -69,6 +69,17 @@ export const cases: Case[] = [
     flagship: true,
   },
   {
+    title: "Генератор КП по фасаду ИНСИ",
+    category: "AI-автоматизация",
+    outcome:
+      "Результат расчёта фасадной системы ИНСИ → готовое КП за секунды: спецификация и смета из калькулятора (совпадают 1-в-1), декомпозиция цены, ₽/м², доставка, условия и PDF. Часы в Excel → минута.",
+    tech: ["Python", "TypeScript", "React", "Vite", "pytest"],
+    demo: "https://kilevoy.github.io/fasad-kp/",
+    code: "https://github.com/kilevoy/fasad-kp",
+    status: "MVP",
+    flagship: true,
+  },
+  {
     title: "B2B-дашборд продаж и склада",
     category: "Аналитика",
     outcome:

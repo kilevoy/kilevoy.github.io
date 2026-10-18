@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Дом из газобетона: КП за минуты</title>
+<meta name="description" content="Демонстрация: расчёт газобетона, чертежи, 3D, раскладка блоков и логистика для частного дома — по размерам, наброску или проекту из интернета.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F2F3F1;--surface:#FFFFFF;--fg:#1E2422;--muted:#5C6662;--line:#D9DDDA;--accent:#7A2430;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;--body:"Onest","Segoe UI",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141816;--surface:#1C2220;--fg:#E7EBE8;--muted:#9AA5A0;--line:#2E3633;--accent:#D46A78;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141816;--surface:#1C2220;--fg:#E7EBE8;--muted:#9AA5A0;--line:#2E3633;--accent:#D46A78;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:1160px;margin:0 auto;padding:24px 16px 56px;display:grid;gap:40px}
+.top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.top b{color:var(--accent);font-weight:500}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.6vw,52px);line-height:1.06;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:62ch;margin:16px 0 0}
+h2{font-family:var(--display);font-weight:500;font-size:22px;margin:0 0 16px}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:s}
+.flow div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.flow b{display:block;font-size:15px}.flow span{font-size:14px;color:var(--muted)}
+@media (max-width:760px){.flow{grid-template-columns:1fr}}
+.cards{display:grid;gap:22px}
+.card{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block;min-height:260px}
+.card .tx{padding:22px 24px;display:grid;gap:12px;align-content:start}
+.tag{font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.15;margin:0}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.kpi{display:flex;flex-wrap:wrap;gap:8px 18px;font:14px var(--mono)}
+.kpi span b{font-family:var(--display);font-size:18px;font-weight:700;color:var(--fg);margin-right:4px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.btn{display:inline-block;text-decoration:none;font:600 14px var(--body);border-radius:4px;padding:10px 14px;border:1px solid var(--fg);color:var(--fg)}
+.btn.main{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:860px){.card{grid-template-columns:1fr}.card img{min-height:200px;max-height:280px}}
+.got{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.got div{border-top:3px solid var(--accent);padding-top:10px}
+.got b{display:block}.got span{font-size:14px;color:var(--muted)}
+@media (max-width:860px){.got{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.demo{border:1px solid var(--accent);color:var(--accent);border-radius:4px;padding:10px 14px;font-size:14px;font-weight:500}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+footer a{color:inherit}
+</style></head><body>
+<div class="wrap">
+<div class="top"><b>Демонстрационный образец</b><span>Расчёт газобетона · КП · чертежи · 3D · логистика</span></div>
+
+<section>
+  <h1>Дом из газобетона: интерактивное КП за минуты, а не за дни</h1>
+  <p class="lead">Частный заказчик приходит без проекта и спрашивает: «Сколько стоит дом?». Здесь три реальных сценария — от одной фразы до проекта из интернета — и что заказчик получает на руки в каждом.</p>
+</section>
+
+<section>
+  <h2>Три входа — одна модель дома</h2>
+  <div class="flow">
+    <div><b>1. Ничего нет</b><span>Только размеры и город. Подбираем типовую планировку и считаем.</span></div>
+    <div><b>2. Набросок от руки</b><span>Фото листка. Переносим в модель и проверяем площади, пролёты, двери.</span></div>
+    <div><b>3. Проект из интернета</b><span>Делаем свой проект того же класса — с чертежами, 3D и раскладкой.</span></div>
+  </div>
+</section>
+
+<section class="cards">
+  <article class="card">
+    <img src="img/g210.jpg" alt="3D-визуализация одноэтажного Г-образного дома Г-210 с террасой" loading="lazy">
+    <div class="tx">
+      <span class="tag">Ветка 3 · проект из интернета → свой проект</span>
+      <h3>Дом Г-210, 206,5 м², с террасой · Магнитогорск</h3>
+      <p>Заказчик показал понравившийся дом. Вместо чужих чертежей — свой эскизный проект: 17 помещений с мебелью, фасады, план кровли, кладочные планы и развёртки стен.</p>
+      <div class="kpi"><span><b>1 044 870 ₽</b>газобетон + кровля</span><span><b>102 м³</b>цена от 81 м³</span><span><b>77</b>поддонов · 5 машин</span></div>
+      <div class="btns"><a class="btn main" href="kp/g210.html">Открыть интерактивное КП</a><a class="btn" href="pdf/g210-paket.pdf">КП и 4 листа чертежей, PDF</a></div>
+    </div>
+  </article>
+  <article class="card">
+    <img src="img/da810.jpg" alt="3D-визуализация дома 8 на 10 метров с крыльцом в нише" loading="lazy">
+    <div class="tx">
+      <span class="tag">Ветка 2 · набросок от руки</span>
+      <h3>Дом 8×10 м, 60,6 м² · с. Вознесенка</h3>
+      <p>Заказчик прислал фото листка. Набросок перенесён в модель, найдено расхождение площадей в нише крыльца — до того, как клиент о нём спросил.</p>
+      <div class="kpi"><span><b>357 441 ₽</b>газобетон + кровля</span><span><b>29</b>поддонов · 2 машины</span></div>
+      <div class="btns"><a class="btn main" href="kp/da810.html">Открыть интерактивное КП</a><a class="btn" href="pdf/da810-paket.pdf">КП и чертёж, PDF</a></div>
+    </div>
+  </article>
+  <article class="card">
+    <img src="img/dg69.jpg" alt="3D-визуализация дома 6 на 9 метров" loading="lazy">
+    <div class="tx">
+      <span class="tag">Ветка 1 · только размеры</span>
+      <h3>Дом 6×9 м, 44,2 м² · Копейск</h3>
+      <p>«Хочу дом 6 на 9, сколько стоит?» Типовая планировка, стандартные решения по стене и кровле, цена и логистика — в течение нескольких минут.</p>
+      <div class="kpi"><span><b>254 331 ₽</b>газобетон + кровля</span><span><b>19</b>поддонов · 2 машины</span></div>
+      <div class="btns"><a class="btn main" href="kp/dg69.html">Открыть интерактивное КП</a><a class="btn" href="pdf/dg69-paket.pdf">КП и чертежи, PDF</a></div>
+    </div>
+  </article>
+</section>
+
+<section>
+  <h2>Что внутри интерактивного КП</h2>
+  <div class="got">
+    <div><b>3D с мебелью</b><span>Покрутить дом, снять кровлю, увидеть комнаты</span></div>
+    <div><b>Конфигуратор</b><span>Стена 300/400, кровля, цвет, покупатель — смета сразу</span></div>
+    <div><b>Раскладка блоков</b><span>Развёртки стен, план по рядам, доборы с длиной</span></div>
+    <div><b>Доставка</b><span>Маршрут, поддоны, загрузка каждой машины, заявка на счёт</span></div>
+  </div>
+</section>
+
+<div class="demo">ДЕМОНСТРАЦИОННЫЙ ОБРАЗЕЦ. Не является предложением ИНСИ БЛОК и публичной офертой. Цены — по публичному прайсу ИНСИ БЛОК от 20.08.2026, без доставки.</div>
+<footer>Для 3D в интерактивном КП нужен интернет. Портфолио: <a href="https://kilevoy.github.io/">kilevoy.github.io</a></footer>
+</div>
+</body></html>

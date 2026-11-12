@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Инструкция — GEO Factory</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#F1F5F9; --panel:#fff; --line:#E2E8F0; --text:#0F172A; --muted:#64748B; --accent:#C84F26; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0B0F17; --panel:#131A26; --line:#232D3D; --text:#E5EAF2; --muted:#8B98AC; --accent:#E8703F; } }
+body { margin:0; background:var(--bg); color:var(--text); font:15px/1.6 'Inter',system-ui,'Segoe UI',Arial,sans-serif; }
+main { max-width:780px; margin:0 auto; padding:32px 20px 70px; }
+a { color:var(--accent); }
+h1 { font-size:26px; margin:14px 0 6px; } h2 { font-size:18px; margin:0 0 8px; }
+.lead { color:var(--muted); margin:0 0 22px; }
+section { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:14px; }
+section p { margin:0 0 10px; } section p:last-child, ol:last-child, ul:last-child { margin-bottom:0; }
+ol, ul { padding-left:22px; margin:0 0 10px; } li { margin-bottom:5px; }
+code { font-family:'Fira Code',Consolas,monospace; font-size:13px; background:var(--bg); padding:1px 5px; border-radius:4px; }
+.n { display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; background:var(--accent); color:#fff; font-size:12px; font-weight:600; margin-right:8px; }
+table { border-collapse:collapse; width:100%; font-size:14px; } td, th { border-bottom:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top; } th { color:var(--muted); font-size:12px; }
+@media print { body { background:#fff; } section { break-inside:avoid; } .back { display:none; } }
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="index.html">← Вернуться в GEO Factory</a>
+<h1>Как работать с GEO Factory</h1>
+<p class="lead">Инструмент ведёт шестинедельный пилот: проверяет на фактах, приводят ли экспертные материалы завода покупателей из поиска Яндекса и ответов нейросетей.</p>
+
+<section>
+<h2>Главное правило</h2>
+<p>Каждая цифра в интерфейсе имеет статус. <b>«Вордстат»</b> — число, снятое в сервисе, с датой. <b>«Демо-оценка»</b> — ориентир, заданный вручную; таких в ядре сейчас нет. Спрос в инструменте реальный, а экономика — модель: конверсии и цену задаёте вы.</p>
+</section>
+
+<section>
+<h2><span class="n">1</span>Обзор</h2>
+<p>Четыре показателя готовности пилота и список ближайших шагов. Кнопка «Печать сводки» даёт одну страницу А4 для руководителя.</p>
+</section>
+
+<section>
+<h2><span class="n">2</span>Спрос</h2>
+<p>Ядро собрано из запросов, которые люди действительно вводят в Яндексе: 50 запросов в 7 кластерах, частоты сняты в Вордстате по Челябинской области и Уралу.</p>
+<ul>
+<li>Частота — число запросов в месяц по широкому соответствию: в «купить газоблок» входят и «купить газоблок в челябинске», и «купить газоблок цена».</li>
+<li>Итог кластера считается только по якорным запросам, иначе вложенные запросы посчитались бы дважды. Это верхняя оценка.</li>
+<li>Раз в месяц обновляйте числа: кнопка «Вордстат ↗» у запроса открывает его в сервисе, новое значение вводится прямо в таблицу. Для всего ядра удобнее «Скачать таблицу CSV» → исправить в Excel → «Загрузить CSV».</li>
+</ul>
+<p>Внизу раздела — архив первой версии ядра: 60 длинных фраз, по 57 из которых спроса нет. Это напоминание, почему темы выбирают по Вордстату, а не по ощущению.</p>
+</section>
+
+<section>
+<h2><span class="n">3</span>Выдача</h2>
+<ol>
+<li>Откройте окно инкогнито и нажмите «Яндекс ↗» у запроса.</li>
+<li>Найдите сайт завода и выберите его позицию: место среди первых 12 органических результатов, рекламные блоки не считаются. Если сайта среди них нет — «нет в топ-12».</li>
+<li>Посмотрите блок «Быстрый ответ ИИ» над выдачей (раньше он назывался Нейро) и отметьте, есть ли завод среди источников или в тексте.</li>
+<li>Запишите, кто стоит на первом месте: это список тех, с кем предстоит конкурировать.</li>
+</ol>
+<p>Запросы для замера взяты из гипотез и имеют реальный спрос. Через шесть недель переключитесь на «Повторный замер» и пройдите те же запросы. Карточки наверху покажут «было → стало».</p>
+</section>
+
+<section>
+<h2><span class="n">4</span>Экономика</h2>
+<p>Калькулятор считает путь: целевые запросы → дополнительные переходы → обращения → отгрузки → выручка и маржа. Спрос подставляется из раздела «Спрос», остальное — допущения, которые вы двигаете ползунками.</p>
+<p>Обязательно введите годовую отгрузку завода. Инструмент сравнит результат модели с фактом и предупредит, если допущения завышены.</p>
+</section>
+
+<section>
+<h2><span class="n">5</span>Контент</h2>
+<table>
+<tr><th>Вкладка</th><th>Что в ней</th></tr>
+<tr><td>Статья</td><td>Текст для публикации. Жёлтые метки <code>[ПОДТВЕРДИТЬ]</code> — данные, которые знает только завод.</td></tr>
+<tr><td>Проверка структуры</td><td>Десять факторов, по которым нейросети выбирают текст для цитирования. Балл не говорит о достоверности.</td></tr>
+<tr><td>Цифры на подтверждение</td><td>Все числовые утверждения текста. Распечатайте и отдайте инженеру, затем отметьте проверенные.</td></tr>
+</table>
+<p style="margin-top:10px">Статус «Подтверждено инженером» нельзя поставить, пока в тексте есть метки <code>[ПОДТВЕРДИТЬ]</code>.</p>
+</section>
+
+<section>
+<h2><span class="n">6</span>План пилота</h2>
+<p>Девять шагов на шесть недель и семь гипотез о темах материалов, отсортированных по реальному спросу.</p>
+</section>
+
+<section>
+<h2>Где хранятся данные</h2>
+<p>Всё, что вы вводите, сохраняется в этом браузере на этом компьютере и никуда не передаётся. Чтобы не потерять работу или перенести её на другой компьютер, пользуйтесь кнопками «Сохранить в файл» и «Загрузить из файла» в левой панели.</p>
+</section>
+
+<section>
+<h2>Для того, кто обновляет данные</h2>
+<ul>
+<li>Обновлённые частоты для всех: сохраните таблицу как <code>data/wordstat_real.csv</code> и запустите <code>python export_data.py</code>. Новые запросы добавляются в <code>src/data/real_core.json</code>.</li>
+<li>Новая статья: файл в <code>articles/</code>, строка в списке <code>PACKS</code> в <code>export_data.py</code>, запись в <code>articles/reviews.json</code>.</li>
+<li>Статус проверки статьи для всех: поле <code>status</code> в <code>articles/reviews.json</code>.</li>
+<li>Файл <code>web/factory_data.js</code> вручную не правится — он собирается скриптом.</li>
+</ul>
+</section>
+</main>
+</body>
+</html>

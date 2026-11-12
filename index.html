@@ -3,216 +3,297 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Андрей Рыкунов — коммерческий руководитель</title>
-<meta name="description" content="Коммерческий руководитель, B2B-продажи в промышленности. Рабочие калькуляторы для расчёта фасадов, профилей ЛСТК, стоимости с окраской и стальных зданий.">
+<title>Андрей Рыкунов — коммерческий руководитель, B2B-продажи в промышленности</title>
+<meta name="description" content="Коммерческий руководитель, 26 лет в промышленном B2B. Выстраиваю управляемые продажи и усиливаю процессы рабочими AI-инструментами: от входящего письма до контроля денег. Демо открыты для просмотра.">
+<meta name="theme-color" content="#1f5f8b">
+<link rel="canonical" href="https://kilevoy.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Андрей Рыкунов">
+<meta property="og:title" content="Андрей Рыкунов — коммерческий руководитель, B2B-продажи в промышленности">
+<meta property="og:description" content="26 лет в промышленном B2B. Рабочие прототипы для отдела продаж: почта, квалификация лидов, расчёт КП, утренний контроль воронки.">
+<meta property="og:url" content="https://kilevoy.github.io/">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Андрей Рыкунов","jobTitle":"Коммерческий руководитель","url":"https://kilevoy.github.io/","sameAs":["https://github.com/kilevoy"]}
+</script>
 <style>
   :root {
+    color-scheme: light dark;
     --bg: #f6f7f9;
     --card: #ffffff;
     --ink: #1c2530;
-    --muted: #5d6b7a;
+    --muted: #55626f;
     --line: #dde3ea;
     --accent: #1f5f8b;
+    --accent-soft: #e8f1f8;
     --accent-ink: #ffffff;
+    --tag-bg: #eef1f4;
   }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
+    :root {
       --bg: #12171d;
       --card: #1a212a;
       --ink: #e7ecf1;
       --muted: #9aa8b6;
       --line: #2a3441;
       --accent: #6aaed6;
+      --accent-soft: #1b2a37;
       --accent-ink: #0f1419;
+      --tag-bg: #232c37;
     }
   }
-  :root[data-theme="dark"] {
-    --bg: #12171d;
-    --card: #1a212a;
-    --ink: #e7ecf1;
-    --muted: #9aa8b6;
-    --line: #2a3441;
-    --accent: #6aaed6;
-    --accent-ink: #0f1419;
-  }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
-  header { padding: 56px 0 28px; }
-  h1 { margin: 0 0 6px; font-size: clamp(28px, 6vw, 40px); line-height: 1.15; letter-spacing: -0.01em; }
-  .role { margin: 0 0 18px; font-size: clamp(17px, 3.4vw, 20px); color: var(--accent); font-weight: 600; }
-  .lead { margin: 0 0 10px; max-width: 62ch; }
-  .lead.muted { color: var(--muted); }
-  h2 { margin: 36px 0 14px; font-size: 22px; }
-  .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
-  @media (min-width: 680px) { .grid { grid-template-columns: 1fr 1fr; } }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 18px;
-    display: flex;
-    flex-direction: column;
-  }
-  .card h3 { margin: 0 0 8px; font-size: 18px; line-height: 1.3; }
-  .card p { margin: 0 0 16px; color: var(--muted); flex: 1; }
-  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  a { color: var(--accent); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .skip { position: absolute; left: -9999px; top: 0; background: var(--accent); color: var(--accent-ink); padding: 10px 14px; z-index: 10; }
+  .skip:focus { left: 8px; top: 8px; }
+
+  header { padding: 64px 0 32px; }
+  .eyebrow { margin: 0 0 10px; font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  h1 { margin: 0 0 16px; font-size: clamp(32px, 6.5vw, 46px); line-height: 1.1; letter-spacing: -0.02em; }
+  .lead { margin: 0 0 12px; max-width: 66ch; font-size: 18px; }
+  .lead.muted { color: var(--muted); font-size: 16.5px; }
+  .contacts { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+
   .btn {
-    display: inline-block;
-    padding: 9px 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    border: 1px solid var(--accent);
-    min-height: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 9px 16px; min-height: 42px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 15px;
+    border: 1px solid var(--accent); line-height: 1.2;
   }
   .btn.primary { background: var(--accent); color: var(--accent-ink); }
-  .btn.ghost { color: var(--accent); background: transparent; }
-  .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-  footer { margin: 40px 0 0; padding: 22px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-  footer a { color: var(--accent); }
+  .btn.ghost { background: transparent; color: var(--accent); }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  section { padding: 12px 0 8px; }
+  h2 { margin: 40px 0 6px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; }
+  .section-lead { margin: 0 0 20px; color: var(--muted); max-width: 70ch; }
+
+  .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .grid.two { grid-template-columns: 1fr 1fr; } .grid.skills { grid-template-columns: repeat(4, 1fr); } }
+
+  .skill { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .skill h3 { margin: 0 0 6px; font-size: 16px; }
+  .skill p { margin: 0; font-size: 14.5px; color: var(--muted); }
+
+  .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 18px; padding: 0; list-style: none; font-weight: 600; font-size: 14.5px; }
+  .flow li { background: var(--accent-soft); color: var(--accent); padding: 5px 12px; border-radius: 999px; }
+  .flow li + li::before { content: "→"; margin-right: 8px; color: var(--muted); font-weight: 400; }
+  .flow li + li { background: none; padding: 0; }
+  .flow li + li span { background: var(--accent-soft); color: var(--accent); padding: 5px 12px; border-radius: 999px; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px; display: flex; flex-direction: column;
+  }
+  .card .step, .card .group-label { flex: none; }
+  .card .step { margin: 0 0 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); }
+  .card h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.3; }
+  .card p { margin: 0 0 14px; color: var(--muted); flex: 1; font-size: 15.5px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+  .tags li { background: var(--tag-bg); color: var(--muted); font-size: 12.5px; padding: 3px 9px; border-radius: 6px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .actions .btn { padding: 8px 13px; min-height: 40px; font-size: 14.5px; }
+  .group-label { margin: 0 0 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .group + .group { margin-top: 12px; }
+
+  .note { margin: 18px 0 0; padding: 14px 16px; border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 14.5px; }
+  .note strong { color: var(--ink); }
+
+  .books { margin: 0 0 14px; padding: 0; list-style: none; display: grid; gap: 4px 20px; grid-template-columns: 1fr; font-size: 14.5px; color: var(--muted); }
+  @media (min-width: 700px) { .books { grid-template-columns: 1fr 1fr; } }
+  .books b { color: var(--ink); font-weight: 600; }
+
+  footer { margin: 48px 0 0; padding: 24px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  footer p { margin: 0 0 8px; }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .contacts, .actions, .skip { display: none; }
+    .card, .skill { break-inside: avoid; }
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">К содержимому</a>
 <div class="wrap">
   <header>
+    <p class="eyebrow">Коммерческий руководитель · B2B-продажи в промышленности</p>
     <h1>Андрей Рыкунов</h1>
-    <p class="role">Коммерческий руководитель, B2B-продажи в промышленности</p>
-    <p class="lead">Более 25 лет в промышленном B2B: металлоконструкции, ЛСТК, кровельные и фасадные системы, металлопрокат, трубы.</p>
-    <p class="lead muted">Использую AI-ассистенты и рабочие инструменты для анализа продаж, клиентской базы и рутинных расчётов.</p>
+    <p class="lead">26 лет в промышленном B2B: металлоконструкции, ЛСТК, кровельные и фасадные системы, металлопрокат, трубы, газобетон. Выстраиваю управляемые продажи: понятный план, честная воронка, маржа под контролем.</p>
+    <p class="lead muted">Рутину отдела продаж снимаю рабочими AI-инструментами. Ниже прототипы, которые можно открыть и проверить. Данные в демо смоделированы.</p>
+    <div class="contacts">
+      <a class="btn primary" href="mailto:rykunov@gmail.com">Написать</a>
+      <a class="btn ghost" href="https://github.com/kilevoy" target="_blank" rel="noopener noreferrer">Профиль на GitHub</a>
+    </div>
   </header>
 
-  <main>
-    <h2>B2B-автоматизация и AI-ассистенты</h2>
-    <div class="grid" style="margin-bottom: 28px;">
-      <article class="card">
-        <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">AI-ассистент · amoCRM · Демо-стенд</div>
-        <h3>AI-квалификатор и маршрутизатор проектов</h3>
-        <p>Автоматическая BANT-квалификация лидов и распределение по воронкам направлений («Ангары и быстровозводимые здания», «Кровли и фасадные системы», «Автоклавный газобетон»). Включает режим фонового анализа диалогов и суфлёра (AI-Copilot) с готовыми техническими подсказками менеджеру.<br><small style="display:inline-block; margin-top: 8px; color: var(--muted); font-size: 13px;">* Смоделированные демонстрационные данные.</small></p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/ai-lead-qualifier/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/ai-lead-qualifier">Код на GitHub</a>
-        </div>
-      </article>
+  <main id="main">
+    <section aria-labelledby="focus">
+      <h2 id="focus">Чем занимаюсь</h2>
+      <div class="grid skills">
+        <div class="skill"><h3>Управление продажами</h3><p>План и факт, воронка, дисциплина CRM, ответственность каждого менеджера за результат.</p></div>
+        <div class="skill"><h3>Мотивация и KPI</h3><p>Системы оплаты, которые двигают отдел к марже и деньгам, а не только к обороту.</p></div>
+        <div class="skill"><h3>Экономика сделки</h3><p>Маржа, условия оплаты, риски дебиторки, участие в тендерах и крупных проектах.</p></div>
+        <div class="skill"><h3>AI в процессах</h3><p>Только там, где он экономит время или снижает риск ошибки. Остальное решается регламентом.</p></div>
+      </div>
+    </section>
 
-      <article class="card">
-        <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Управление продажами · Аналитика · Демо-стенд</div>
-        <h3>Утренний пульс РОПа (B2B Executive Briefing)</h3>
-        <p>Автоматический аудит воронки продаж промышленного холдинга в 08:45: сводка план/факт по трём производственным направлениям, выявление сделок без движения более 5 дней, антирейтинг просроченных задач и контроль просроченной дебиторки (DSO) прямо в Telegram.<br><small style="display:inline-block; margin-top: 8px; color: var(--muted); font-size: 13px;">* Смоделированные демонстрационные данные.</small></p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/b2b-executive-briefing/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/b2b-executive-briefing">Код на GitHub</a>
-        </div>
-      </article>
+    <section aria-labelledby="pipeline">
+      <h2 id="pipeline">Сквозной сценарий отдела продаж</h2>
+      <p class="section-lead">Четыре прототипа образуют цепочку: входящее письмо превращается в квалифицированный лид, лид в расчёт и КП, а руководитель каждое утро видит, где воронка буксует.</p>
+      <ol class="flow" aria-label="Этапы сценария">
+        <li>Письмо</li>
+        <li><span>Лид</span></li>
+        <li><span>Расчёт и КП</span></li>
+        <li><span>Контроль воронки</span></li>
+      </ol>
 
-      <article class="card">
-        <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Расчёт ТЗ · 1С / amoCRM · Демо-стенд</div>
-        <h3>AI-парсер ТЗ и авто-генератор КП</h3>
-        <p>Расшифровка строительных спецификаций, ведомостей объёмов работ (ВОР) и заявок снабжения по 3 направлениям (Ангары/ЛСТК, Фасады и профили ГПС, Газобетон). Пересчёт единиц (тонны → м.п., м³ → поддоны), оптимизация раскроя рулона 1250 мм, авто-допродажа комплектующих, расчёт фур и контроль маржи за 1,5 секунды вместо 3 дней в ПТО.<br><small style="display:inline-block; margin-top: 8px; color: var(--muted); font-size: 13px;">* Смоделированные демонстрационные данные.</small></p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/b2b-spec-parser/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/b2b-spec-parser">Код на GitHub</a>
-        </div>
-      </article>
+      <div class="grid two">
+        <article class="card">
+          <p class="step">Шаг 1 · Входящий поток</p>
+          <h3>Почтовый шлюз перед CRM</h3>
+          <p>Фильтрует общие ящики (info@, zakaz@, sales@): отсекает холодный спам и фишинг, из заявок достаёт ИНН и телефон, направляет письмо в нужную воронку amoCRM.</p>
+          <ul class="tags"><li>Правила классификации</li><li>Python</li></ul>
+          <div class="actions">
+            <a class="btn primary" href="https://kilevoy.github.io/b2b-email-triage/">Открыть демо</a>
+            <a class="btn ghost" href="https://kilevoy.github.io/b2b-email-triage/guide.html">Инструкция</a>
+            <a class="btn ghost" href="https://github.com/kilevoy/b2b-email-triage" target="_blank" rel="noopener noreferrer">Код</a>
+          </div>
+        </article>
 
-      <article class="card">
-        <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Почтовый шлюз · Анти-Спам · amoCRM</div>
-        <h3>AI-диспетчер корпоративной почты B2B</h3>
-        <p>Интеллектуальный фильтр общих ящиков (info@, zakaz@, sales@) перед amoCRM: отсекает холодный B2B-спам («грузоперевозки», «продвижение») и фишинг (.pdf.exe), пересылает акты сверки в бухгалтерию, а из целевых заявок извлекает ИНН/телефон и создаёт сделку в нужной воронке.<br><small style="display:inline-block; margin-top: 8px; color: var(--muted); font-size: 13px;">* Смоделированные демонстрационные данные.</small></p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/b2b-email-triage/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/b2b-email-triage">Код на GitHub</a>
-        </div>
-      </article>
-    </div>
+        <article class="card">
+          <p class="step">Шаг 2 · Квалификация</p>
+          <h3>Квалификатор лидов и маршрутизатор</h3>
+          <p>Оценивает обращение по BANT, определяет направление («Ангары», «Кровли и фасады», «Газобетон»), создаёт сделку в нужной воронке и отправляет алерт РОПу в Telegram. Есть подсказки менеджеру в диалоге.</p>
+          <ul class="tags"><li>BANT-скоринг</li><li>Правила + LLM (опционально)</li><li>amoCRM · Telegram</li></ul>
+          <div class="actions">
+            <a class="btn primary" href="https://kilevoy.github.io/ai-lead-qualifier/">Открыть демо</a>
+            <a class="btn ghost" href="https://kilevoy.github.io/ai-lead-qualifier/guide.html">Инструкция</a>
+            <a class="btn ghost" href="https://github.com/kilevoy/ai-lead-qualifier" target="_blank" rel="noopener noreferrer">Код</a>
+          </div>
+        </article>
 
-    <h2>Методологическая база знаний и AI-скиллы (Book-Skills)</h2>
-    <div class="card" style="margin-bottom: 28px; border-left: 4px solid var(--accent);">
-      <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Инженерия знаний · Claude Code & Codex · GitHub Open Source</div>
-      <h3 style="font-size: 19px; margin-bottom: 8px;">AI-скиллы на базе мировых бестселлеров по B2B-продажам и управлению</h3>
-      <p style="margin-bottom: 12px;">Оцифровка фундаментальных методологий в прикладные инженерные навыки (Skills) для языковых моделей. Модель не выдаёт абстрактные шаблоны, а действует по строгим алгоритмам, конспектам глав и шпаргалкам из книг:</p>
-      <ul style="margin: 0 0 16px 22px; padding: 0; font-size: 14.5px; color: var(--muted); line-height: 1.65;">
-        <li><strong style="color:var(--ink);">«Чемпионы продаж» (Мэттью Диксон, Брент Адамсон):</strong> методология Challenger Sale для работы с закупочными комитетами, коммерческое обучение клиента и ведение переговоров на равных без скидок.</li>
-        <li><strong style="color:var(--ink);">«Сначала скажите „НЕТ“» (Джим Кэмп):</strong> система жестких B2B-переговоров, избавление от «нужды», эффект Коломбо, право на «нет» и защита маржи завода против агрессивных снабженцев.</li>
-        <li><strong style="color:var(--ink);">«СПИН-продажи» (Нил Рэкхем):</strong> методология больших B2B-сделок, перевод скрытых потребностей в явные через цепочку извлекающих вопросов, предотвращение ценового торга.</li>
-        <li><strong style="color:var(--ink);">«Никаких компромиссов» (Крис Восс):</strong> тактическая эмпатия, защита маржи завода, калиброванные вопросы и модель торга Аккермана против агрессивных отделов снабжения.</li>
-        <li><strong style="color:var(--ink);">«Цель» (Элияху Голдратт):</strong> Теория ограничений систем (TOC), синхронизация сбыта с ПТО и производством, выявление и расшивка «узких мест».</li>
-        <li><strong style="color:var(--ink);">«Спроси маму» (Роб Фитцпатрик):</strong> методология проверки спроса (CustDev) при выводе новых линеек продукции завода (фасады, газобетон, профили ГПС).</li>
-        <li><strong style="color:var(--ink);">«Пиши, сокращай» (Максим Ильяхов):</strong> строгий инфостиль в коммерческих предложениях и деловой переписке без канцелярита и пустых штампов.</li>
-        <li><strong style="color:var(--ink);">«Атомные привычки» (Джеймс Клир):</strong> системное внедрение регламентов и стандартов CRM без саботажа в отделе продаж.</li>
+        <article class="card">
+          <p class="step">Шаг 3 · Расчёт</p>
+          <h3>Парсер ТЗ и генератор КП</h3>
+          <p>Разбирает спецификации и ведомости объёмов, пересчитывает единицы (тонны в метры, кубы в поддоны), подбирает заводские аналоги, предлагает сопутствующие позиции, считает фуры и контролирует маржу КП.</p>
+          <ul class="tags"><li>Правила + справочник номенклатуры</li><li>Экспорт CSV для 1С · JSON для amoCRM</li></ul>
+          <div class="actions">
+            <a class="btn primary" href="https://kilevoy.github.io/b2b-spec-parser/">Открыть демо</a>
+            <a class="btn ghost" href="https://kilevoy.github.io/b2b-spec-parser/guide.html">Инструкция</a>
+            <a class="btn ghost" href="https://github.com/kilevoy/b2b-spec-parser" target="_blank" rel="noopener noreferrer">Код</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="step">Шаг 4 · Контроль</p>
+          <h3>Утренний пульс РОПа</h3>
+          <p>Сводка к 08:45 в Telegram: план и факт по направлениям, сделки без движения дольше пяти дней, просроченные задачи, просроченная дебиторка и фокус дня руководителю.</p>
+          <ul class="tags"><li>Правила анализа воронки</li><li>amoCRM · Telegram</li></ul>
+          <div class="actions">
+            <a class="btn primary" href="https://kilevoy.github.io/b2b-executive-briefing/">Открыть демо</a>
+            <a class="btn ghost" href="https://kilevoy.github.io/b2b-executive-briefing/guide.html">Инструкция</a>
+            <a class="btn ghost" href="https://github.com/kilevoy/b2b-executive-briefing" target="_blank" rel="noopener noreferrer">Код</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="note"><strong>Что здесь реально, а что демо.</strong> Страницы работают в браузере на смоделированных данных: имена, суммы и письма вымышлены. Серверная часть на Python без ключей работает в режиме эмуляции. Интеграции с amoCRM и Telegram заложены в квалификаторе и утреннем пульсе; почтовый шлюз и парсер ТЗ формируют данные для импорта.</p>
+    </section>
+
+    <section aria-labelledby="calc">
+      <h2 id="calc">Инженерные калькуляторы</h2>
+      <p class="section-lead">Расчёты, которые раньше собирались вручную в Excel. Результаты справочные и не заменяют проектную документацию и расчёт несущей способности.</p>
+      <div class="grid two">
+        <article class="card">
+          <h3>Дом из газобетона: интерактивное КП</h3>
+          <p>Размеры, набросок или проект из интернета на входе; на выходе 3D-модель, смета, раскладка блоков, поддоны, машины и маршрут доставки. Демонстрационный образец, не оферта.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://kilevoy.github.io/gazobeton-kp-demo/">Открыть демо</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Фасады из кассет (НФС)</h3>
+          <p>Площади за вычетом проёмов, раскладка кассет, подсистема, утеплитель, крепёж и смета. Прайс загружается из Excel без правки кода.</p>
+          <ul class="tags"><li>React · TypeScript</li><li>Тесты расчётного ядра</li></ul>
+          <div class="actions">
+            <a class="btn primary" href="https://kilevoy.github.io/fasad/">Открыть демо</a>
+            <a class="btn ghost" href="https://github.com/kilevoy/fasad" target="_blank" rel="noopener noreferrer">Код</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Профили ЛСТК</h3>
+          <p>Масса, развёртка, раскрой рулона и процент отхода. Два режима: стандартные профили по ГОСТ и расширенный для ПП, ПГС, ПЗ любых размеров, с ценой погонного метра с учётом отхода.</p>
+          <div class="group">
+            <p class="group-label">Стандартные профили по ГОСТ</p>
+            <div class="actions">
+              <a class="btn primary" href="https://kilevoy.github.io/LSTK/">Открыть демо</a>
+              <a class="btn ghost" href="https://github.com/kilevoy/LSTK" target="_blank" rel="noopener noreferrer">Код</a>
+            </div>
+          </div>
+          <div class="group">
+            <p class="group-label">Расширенный: ПП, ПГС, ПЗ</p>
+            <div class="actions">
+              <a class="btn primary" href="https://kilevoy.github.io/gps/">Открыть демо</a>
+              <a class="btn ghost" href="https://github.com/kilevoy/gps" target="_blank" rel="noopener noreferrer">Код</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Стоимость с порошковой окраской</h3>
+          <p>Итоговая цена за тонну с учётом окраски и переработки. Ставки окраски и переработки задаёт пользователь.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://kilevoy.github.io/coating-processing-calculator/">Открыть демо</a>
+            <a class="btn ghost" href="https://github.com/kilevoy/coating-processing-calculator" target="_blank" rel="noopener noreferrer">Код</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Стальные здания: подбор каркаса</h3>
+          <p>Предварительный подбор каркаса промышленного здания: колонны, фермы, прогоны, смета. Расчёт справочный, ориентирован на СП 16.13330 и СП 20.13330 и требует проверки инженером-конструктором.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://kilevoy.github.io/steel-building-calc/">Открыть демо</a>
+            <a class="btn ghost" href="https://github.com/kilevoy/steel-building-calc" target="_blank" rel="noopener noreferrer">Код</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills">
+      <h2 id="skills">Методики для AI: Book-Skills</h2>
+      <p class="section-lead">Конспекты восьми книг о продажах, переговорах и управлении, оформленные как скиллы для Claude Code и Codex: у модели есть опорные методики, а не только общие слова. Это рабочие конспекты, а не тексты книг.</p>
+      <ul class="books">
+        <li><b>Чемпионы продаж</b> — Диксон, Адамсон</li>
+        <li><b>СПИН-продажи</b> — Рэкхем</li>
+        <li><b>Сначала скажите «НЕТ»</b> — Кэмп</li>
+        <li><b>Никаких компромиссов</b> — Восс, Раз</li>
+        <li><b>Цель</b> — Голдратт, Кокс</li>
+        <li><b>Спроси маму</b> — Фитцпатрик</li>
+        <li><b>Пиши, сокращай</b> — Ильяхов, Сарычева</li>
+        <li><b>Атомные привычки</b> — Клир</li>
       </ul>
       <div class="actions">
-        <a class="btn primary" href="https://github.com/kilevoy/book-skills" target="_blank">📚 Открыть базу Book-Skills на GitHub ↗</a>
+        <a class="btn ghost" href="https://github.com/kilevoy/book-skills" target="_blank" rel="noopener noreferrer">Book-Skills на GitHub</a>
       </div>
-    </div>
-
-    <h2>Инженерные и коммерческие калькуляторы</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Дом из газобетона: интерактивное КП</h3>
-        <p>Три сценария — только размеры, набросок от руки, проект из интернета: 3D, смета, раскладка блоков, поддоны, машины и маршрут доставки.</p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/gazobeton-kp-demo/">Открыть демо</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Калькулятор фасадов из кассет</h3>
-        <p>Площади, подсистема, комплектация и смета для навесного вентилируемого фасада из кассет. Прайс подгружается из Excel.</p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/fasad/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/fasad">Код на GitHub</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Калькулятор профилей ЛСТК по ГОСТ</h3>
-        <p>Стандартные профили по ГОСТ: масса, развёртка и раскрой рулона, чертёж сечения.</p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/LSTK/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/LSTK">Код на GitHub</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Калькулятор профилей ЛСТК: расширенный</h3>
-        <p>Профили ПП, ПГС, ПЗ любых размеров, которые можно изготовить: развёртка, раскрой рулона, процент отхода, цена за погонный метр с учётом отхода.</p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/gps/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/gps">Код на GitHub</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Калькулятор стоимости с порошковой окраской</h3>
-        <p>Итоговая цена за тонну с учётом окраски и переработки; ставки вводит пользователь.</p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/coating-processing-calculator/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/coating-processing-calculator">Код на GitHub</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Калькулятор стальных зданий</h3>
-        <p>Подбор стального каркаса промышленного здания: колонны, фермы, прогоны, смета. Справочный расчёт по СП 16.13330 / СП 20.13330.</p>
-        <div class="actions">
-          <a class="btn primary" href="https://kilevoy.github.io/steel-building-calc/">Открыть демо</a>
-          <a class="btn ghost" href="https://github.com/kilevoy/steel-building-calc">Код на GitHub</a>
-        </div>
-      </article>
-    </div>
+    </section>
   </main>
 
   <footer>
-    <p>Инструменты справочные. Результаты не заменяют проектную документацию и расчёт несущей способности.</p>
-    <p><a href="mailto:rykunov@gmail.com">rykunov@gmail.com</a> · <a href="https://github.com/kilevoy">Профиль на GitHub</a></p>
+    <p>Инструменты справочные. Результаты не заменяют проектную документацию, юридическую и финансовую экспертизу. Данные в демонстрациях смоделированы.</p>
+    <p><a href="mailto:rykunov@gmail.com">rykunov@gmail.com</a> · <a href="https://github.com/kilevoy" target="_blank" rel="noopener noreferrer">github.com/kilevoy</a> · Обновлено: ноябрь 2026</p>
   </footer>
 </div>
 </body>

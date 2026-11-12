@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Досье на компанию перед первым звонком — демо</title>
+<meta name="description" content="Демо: разбор входящей заявки и досье на компанию для менеджера перед первым звонком. Данные вымышлены.">
+<style>
+  :root { color-scheme: light dark; --bg:#f6f7f9; --card:#fff; --ink:#1c2530; --muted:#55626f; --line:#dde3ea; --accent:#1f5f8b; --soft:#e8f1f8; --ok:#1d7a46; --okbg:#e5f4ea; --bad:#a43a2a; --badbg:#fbeceb; --warn:#8a5b00; --warnbg:#fff4d6; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12171d; --card:#1a212a; --ink:#e7ecf1; --muted:#9aa8b6; --line:#2a3441; --accent:#6aaed6; --soft:#1b2a37; --ok:#6fd09a; --okbg:#173225; --bad:#f0968a; --badbg:#3a1f1c; --warn:#f0c46a; --warnbg:#3a2e12; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px 48px; }
+  .banner { background:var(--warnbg); color:var(--warn); padding:9px 16px; font-size:14px; text-align:center; }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(26px,5vw,36px); line-height:1.15; margin: 28px 0 8px; }
+  .lead { color:var(--muted); max-width: 70ch; margin: 0 0 20px; }
+  .layout { display:grid; gap:16px; grid-template-columns:1fr; }
+  @media (min-width: 860px) { .layout { grid-template-columns: 330px 1fr; } }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .panel h2 { font-size:16px; margin:0 0 10px; }
+  .step { font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent); margin:0 0 4px; }
+  .req { display:block; width:100%; text-align:left; background:transparent; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; margin:0 0 8px; cursor:pointer; font:inherit; font-size:14.5px; }
+  .req:hover { border-color:var(--accent); }
+  .req[aria-pressed="true"] { border-color:var(--accent); background:var(--soft); }
+  .req b { display:block; font-size:13px; color:var(--muted); font-weight:600; }
+  textarea { width:100%; min-height:110px; border:1px solid var(--line); border-radius:10px; padding:10px; font:inherit; font-size:14.5px; background:var(--bg); color:var(--ink); resize:vertical; }
+  .btn { background:var(--accent); color:var(--card); border:0; border-radius:8px; padding:9px 14px; font:inherit; font-weight:600; cursor:pointer; margin-top:8px; }
+  .badge { display:inline-block; padding:3px 10px; border-radius:999px; font-size:13px; font-weight:700; }
+  .b-ok { background:var(--okbg); color:var(--ok); } .b-bad { background:var(--badbg); color:var(--bad); } .b-warn { background:var(--warnbg); color:var(--warn); }
+  .msg { white-space:pre-wrap; background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:12px; font-size:14.5px; margin:0 0 12px; }
+  ul.sig { margin: 6px 0 0; padding-left: 20px; font-size:14.5px; color:var(--muted); }
+  table { width:100%; border-collapse:collapse; font-size:14.5px; margin:6px 0 4px; }
+  td { padding:6px 8px; border-top:1px solid var(--line); vertical-align:top; }
+  td:first-child { width:38%; color:var(--muted); }
+  .q li { margin:3px 0; }
+  .empty { color:var(--muted); font-size:15px; }
+  .note { font-size:13.5px; color:var(--muted); margin-top:12px; }
+  .gap { margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="banner">Демонстрация на вымышленных данных: компании, реквизиты и письма придуманы. Совпадения случайны.</div>
+<div class="wrap">
+  <p style="margin:18px 0 0"><a href="../">← Портфолио</a></p>
+  <h1>Досье на компанию перед первым звонком</h1>
+  <p class="lead">Входящую заявку сначала разбирают по правилам: реальный запрос это или реклама. Если запрос реальный, собирается карточка компании и список вопросов, чтобы менеджер позвонил уже подготовленным. Выберите письмо слева или вставьте свой текст.</p>
+
+  <div class="layout">
+    <div>
+      <div class="panel">
+        <p class="step">Входящие</p>
+        <h2>Примеры писем</h2>
+        <div id="list"></div>
+        <h2 class="gap">Свой текст</h2>
+        <textarea id="own" placeholder="Вставьте текст письма. Демо покажет, как правила его классифицируют."></textarea>
+        <button class="btn" id="runOwn" type="button">Разобрать</button>
+      </div>
+    </div>
+
+    <div class="panel" id="out" aria-live="polite">
+      <p class="empty">Выберите письмо, чтобы увидеть разбор и досье.</p>
+    </div>
+  </div>
+  <p class="note">Как это устроено: правила классификации по признакам в тексте (площадь, сроки, объект, технические задания против предложений услуг и рассылок). Для заявки определяется ИНН и тип запроса, из справочника подставляются сведения о компании, а недостающие данные превращаются в вопросы менеджеру. В демо справочник вымышленный; никакие внешние сервисы не вызываются.</p>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var DIRECTORY = {
+    '7700000011': { name: 'ООО «Северстрой-Альфа»', kind: 'Генеральный подрядчик', size: 'Средняя, около 120 человек', region: 'Тюмень', activity: 'Промышленное и складское строительство', projects: 'Склады и производственные цеха, 2–3 объекта в год', contact: 'Иван Петров, руководитель отдела снабжения', risk: 'Работает по тендерам: возможен длинный цикл согласования и жёсткие требования к цене.' },
+    '7700000022': { name: 'ООО «ДомСтрой-Регион»', kind: 'Застройщик малоэтажного жилья', size: 'Небольшая, около 40 человек', region: 'Екатеринбург', activity: 'Коттеджные посёлки', projects: 'Посёлок на 60 домов, 2-я очередь', contact: 'Мария Орлова, коммерческий директор', risk: 'Чувствительны к срокам поставки; возможны этапные оплаты.' }
+  };
+  var SAMPLES = [
+    { id: 1, from: 'Снабжение, Северстрой-Альфа', text: 'Добрый день! Нужен ангар 30×60 м, высота 8 м, для склада. Объект в Тюмени, площадка готова. Прошу прислать расчёт стоимости и сроки монтажа до конца месяца. ИНН 7700000011. Прикладываю ТЗ.' },
+    { id: 2, from: 'Менеджер, «ТрейдПартнёр»', text: 'Здравствуйте! Предлагаем выгодное сотрудничество: поставки крепежа и комплектующих со скидкой для вас до 25%. Актуальный прайс во вложении, готовы выслать каталог.' },
+    { id: 3, from: 'Рассылка, конференция', text: 'Приглашаем на вебинар по цифровизации в строительстве. Регистрация по ссылке. Чтобы отписаться от рассылки, нажмите здесь.' },
+    { id: 4, from: 'Коммерческий директор, ДомСтрой-Регион', text: 'Нужны газоблоки D500 на посёлок, около 1800 кубов в сезон, поставка партиями. Просим расчёт и условия оплаты. ИНН 7700000022.' }
+  ];
+  var LEAD = [/ТЗ|техническ\w+ задан/i, /(\d+)\s*[×x*хХ]\s*(\d+)/, /\bм[²2]\b|кубов|\bм3\b|кубическ/i, /сроки?|к концу|до конца/i, /объект|площадк/i, /расч[её]т|стоимост/i, /нужн[аыо]?\b|прошу|просим/i, /ИНН\s*\d{10}/i];
+  var AD = [/предлагаем/i, /выгодн\w+ сотрудничеств/i, /скидк\w+ для вас/i, /прайс/i, /каталог/i, /готовы выслать/i, /наша компания/i];
+  var MAIL = [/вебинар/i, /отписат/i, /регистраци/i, /приглашаем/i, /конференци/i, /рассылк/i];
+  var LABEL = {
+    lead: ['Реальная заявка', 'b-ok'], ad: ['Предложение поставщика', 'b-warn'], mail: ['Рассылка', 'b-bad'], unclear: ['Неоднозначно, на ручную проверку', 'b-warn']
+  };
+  function hits(list, t) { return list.filter(function (r) { return r.test(t); }); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function classify(t) {
+    var l = hits(LEAD, t), a = hits(AD, t), m = hits(MAIL, t);
+    var verdict = 'unclear';
+    if (m.length >= 2 && m.length > l.length) verdict = 'mail';
+    else if (a.length >= 2 && a.length > l.length) verdict = 'ad';
+    else if (l.length >= 3 && l.length > a.length) verdict = 'lead';
+    return { verdict: verdict, lead: l.length, ad: a.length, mail: m.length };
+  }
+  function extract(t) {
+    var f = {};
+    var inn = t.match(/ИНН\s*(\d{10})/i); if (inn) f.inn = inn[1];
+    var dim = t.match(/(\d+)\s*[×x*хХ]\s*(\d+)/); if (dim) f.dim = dim[1] + ' × ' + dim[2] + ' м';
+    var h = t.match(/высот\w*\s*(\d+)\s*м/i); if (h) f.height = h[1] + ' м';
+    var cub = t.match(/(\d[\d\s]*)\s*куб/i); if (cub) f.volume = cub[1].replace(/\s/g, '') + ' м³';
+    var mat = t.match(/газоблок\w*\s*(D\d{3})|\b(D\d{3})\b/i); if (mat) f.material = (mat[1] || mat[2]);
+    var city = t.match(/в\s+(Тюмени|Екатеринбурге|Челябинске|Перми|Уфе)/i); if (city) f.city = city[1];
+    if (/ангар/i.test(t)) f.subject = 'Ангар (ЛСТК)'; else if (/газоблок|газобетон/i.test(t)) f.subject = 'Газобетон';
+    if (/ТЗ|техническ\w+ задан/i.test(t)) f.tz = 'приложено';
+    if (/до конца месяца|сроки/i.test(t)) f.deadline = 'указан срок';
+    if (/оплат/i.test(t)) f.payment = 'запрошены условия оплаты';
+    return f;
+  }
+  function questions(f, info) {
+    var q = [];
+    if (!f.subject) q.push('Какую продукцию и в каком объёме нужно закупить?');
+    if (f.subject === 'Ангар (ЛСТК)') {
+      if (!f.height) q.push('Высота до низа конструкций и нагрузки (снег, ветер, кран-балка)?');
+      q.push('Есть ли проект и тип ограждающих конструкций (сэндвич-панели, утеплитель)?');
+      if (!f.tz) q.push('Есть ли техническое задание? Можно ли получить его до расчёта?');
+      q.push('Кто выполняет монтаж и фундамент, нужна ли доставка?');
+    }
+    if (f.subject === 'Газобетон') {
+      q.push('График поставки по месяцам и объём на одну партию?');
+      q.push('Нужны ли сопутствующие материалы (клей, перемычки, армирование)?');
+      q.push('Условия оплаты: предоплата или этапы?');
+    }
+    if (!f.deadline) q.push('К какому сроку нужен расчёт и когда нужна поставка?');
+    if (!f.city) q.push('Адрес объекта и условия подъезда?');
+    if (!info) q.push('Реквизиты компании не найдены: уточнить ИНН и контактное лицо.');
+    return q;
+  }
+  function row(k, v) { return '<tr><td>' + k + '</td><td>' + esc(v) + '</td></tr>'; }
+  function render(text, from) {
+    var c = classify(text), f = extract(text), lab = LABEL[c.verdict];
+    var out = '<p class="step">Шаг 1 · Разбор письма</p>';
+    out += '<h2>' + (from ? esc(from) : 'Ваш текст') + '</h2><div class="msg">' + esc(text) + '</div>';
+    out += '<span class="badge ' + lab[1] + '">' + lab[0] + '</span>';
+    out += '<ul class="sig"><li>Признаков реального запроса: ' + c.lead + '</li><li>Признаков рекламы поставщика: ' + c.ad + '</li><li>Признаков рассылки: ' + c.mail + '</li></ul>';
+    if (c.verdict !== 'lead') {
+      out += '<p class="note">' + (c.verdict === 'unclear' ? 'Правила не уверены: письмо уходит на ручную проверку менеджеру. Ничего не удаляется и не отправляется.' : 'Досье не собирается: письмо не считается заявкой. Оно остаётся в низком приоритете, не удаляется.') + '</p>';
+      return out;
+    }
+    var info = f.inn && DIRECTORY[f.inn];
+    out += '<div class="gap"><p class="step">Шаг 2 · Досье на компанию</p>';
+    out += '<table>';
+    if (info) {
+      out += row('Компания', info.name) + row('ИНН', f.inn) + row('Тип', info.kind) + row('Размер', info.size) + row('Регион', info.region) + row('Деятельность', info.activity) + row('Известные проекты', info.projects) + row('Контакт', info.contact);
+    } else {
+      out += row('Компания', 'Не определена по справочнику') + row('ИНН', f.inn || 'в письме не указан');
+    }
+    out += '</table></div>';
+    out += '<div class="gap"><p class="step">Что известно из заявки</p><table>';
+    if (f.subject) out += row('Предмет запроса', f.subject);
+    if (f.dim) out += row('Габариты', f.dim);
+    if (f.height) out += row('Высота', f.height);
+    if (f.volume) out += row('Объём', f.volume);
+    if (f.material) out += row('Марка', f.material);
+    if (f.city) out += row('Объект', f.city);
+    if (f.tz) out += row('ТЗ', f.tz);
+    if (f.deadline) out += row('Срок', f.deadline);
+    if (f.payment) out += row('Оплата', f.payment);
+    out += '</table></div>';
+    out += '<div class="gap"><p class="step">Шаг 3 · Вопросы к первому звонку</p><ul class="q">' + questions(f, info).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>';
+    if (info) out += '<div class="gap"><p class="step">Риски и на что обратить внимание</p><p style="margin:4px 0 0">' + esc(info.risk) + '</p></div>';
+    out += '<p class="note">Результат: менеджер открывает карточку перед звонком и сразу видит, кто пишет, что просит и что нужно уточнить.</p>';
+    return out;
+  }
+  var list = document.getElementById('list'), out = document.getElementById('out');
+  SAMPLES.forEach(function (s) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'req'; b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = '<b>' + esc(s.from) + '</b>' + esc(s.text.slice(0, 70)) + '…';
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(list.children, function (x) { x.setAttribute('aria-pressed', 'false'); });
+      b.setAttribute('aria-pressed', 'true');
+      out.innerHTML = render(s.text, s.from);
+    });
+    list.appendChild(b);
+  });
+  document.getElementById('runOwn').addEventListener('click', function () {
+    var t = document.getElementById('own').value.trim();
+    if (!t) { out.innerHTML = '<p class="empty">Вставьте текст письма.</p>'; return; }
+    Array.prototype.forEach.call(list.children, function (x) { x.setAttribute('aria-pressed', 'false'); });
+    out.innerHTML = render(t, '');
+  });
+})();
+</script>
+</body>
+</html>

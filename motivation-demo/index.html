@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мотивация менеджера: какой шаг выгоднее — демо</title>
+<meta name="description" content="Демо: калькулятор премии для менеджера по активным продажам и аккаунт-менеджера. Показывает, какой шаг приносит больше денег, и почему скидка ради плана не выгодна. Ставки условные, данные вымышлены.">
+<style>
+  :root { color-scheme: light dark; --bg:#f6f7f9; --card:#fff; --ink:#1c2530; --muted:#55626f; --line:#dde3ea; --accent:#1f5f8b; --soft:#e8f1f8; --ok:#1d7a46; --okbg:#e5f4ea; --bad:#a43a2a; --badbg:#fbeceb; --warn:#8a5b00; --warnbg:#fff4d6; --bar:#6aaed6; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12171d; --card:#1a212a; --ink:#e7ecf1; --muted:#9aa8b6; --line:#2a3441; --accent:#6aaed6; --soft:#1b2a37; --ok:#6fd09a; --okbg:#173225; --bad:#f0968a; --badbg:#3a1f1c; --warn:#f0c46a; --warnbg:#3a2e12; --bar:#3f7ea6; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+  .wrap { max-width:1060px; margin:0 auto; padding:0 20px 48px; }
+  .banner { background:var(--warnbg); color:var(--warn); padding:9px 16px; font-size:14px; text-align:center; }
+  a { color:var(--accent); }
+  h1 { font-size:clamp(26px,5vw,36px); line-height:1.15; margin:28px 0 8px; }
+  .lead { color:var(--muted); max-width:72ch; margin:0 0 18px; }
+  .tabs { display:flex; gap:8px; margin:0 0 16px; flex-wrap:wrap; }
+  .tab { border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:999px; padding:8px 16px; font:inherit; font-weight:600; cursor:pointer; }
+  .tab[aria-selected="true"] { background:var(--accent); color:var(--card); border-color:var(--accent); }
+  .layout { display:grid; gap:16px; grid-template-columns:1fr; }
+  @media (min-width:880px) { .layout { grid-template-columns:380px 1fr; } }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .panel + .panel { margin-top:16px; }
+  .step { font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent); margin:0 0 4px; }
+  h2 { font-size:16px; margin:0 0 12px; }
+  .role-note { font-size:14px; color:var(--muted); margin:0 0 14px; }
+  .field { margin:0 0 14px; }
+  .field label { display:flex; justify-content:space-between; font-size:14.5px; margin-bottom:4px; }
+  .field output { font-weight:700; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .hint { font-size:13px; color:var(--muted); margin:2px 0 0; }
+  .big { font-size:clamp(38px,8vw,56px); font-weight:800; line-height:1.05; margin:2px 0 2px; font-variant-numeric:tabular-nums; }
+  .sub { font-size:14px; color:var(--muted); }
+  .wf { margin:14px 0 0; }
+  .wf-row { display:grid; grid-template-columns:130px 1fr 92px; gap:8px; align-items:center; margin:6px 0; font-size:14px; }
+  .wf-bar { height:14px; background:var(--soft); border-radius:7px; overflow:hidden; }
+  .wf-bar i { display:block; height:100%; background:var(--bar); border-radius:7px; transition:width .35s ease; }
+  .wf-row b { text-align:right; font-variant-numeric:tabular-nums; }
+  .lev { display:grid; grid-template-columns:1fr 100px; gap:8px; align-items:center; margin:8px 0; font-size:14.5px; }
+  .lev .lbar { height:10px; background:var(--soft); border-radius:5px; margin-top:4px; overflow:hidden; }
+  .lev .lbar i { display:block; height:100%; border-radius:5px; transition:width .35s ease; }
+  .lev b { text-align:right; font-variant-numeric:tabular-nums; }
+  .pos { color:var(--ok); } .neg { color:var(--bad); }
+  .lev .pos-bar i { background:var(--ok); } .lev .neg-bar i { background:var(--bad); }
+  .verdict { background:var(--soft); border-radius:10px; padding:10px 12px; font-size:14.5px; margin-top:12px; }
+  .trap { background:var(--badbg); color:var(--bad); border-radius:10px; padding:10px 12px; font-size:14.5px; margin-top:12px; }
+  details { margin-top:14px; font-size:14.5px; }
+  summary { cursor:pointer; font-weight:600; }
+  code { background:var(--bg); padding:1px 5px; border-radius:4px; font-size:13.5px; }
+  .note { font-size:13.5px; color:var(--muted); margin-top:14px; max-width:80ch; }
+</style>
+</head>
+<body>
+<div class="banner">Демонстрация: ставки условные, данные вымышлены. Это не система мотивации какой-либо реальной компании.</div>
+<div class="wrap">
+  <p style="margin:18px 0 0"><a href="../">← Портфолио</a></p>
+  <h1>Какой шаг приносит менеджеру больше денег</h1>
+  <p class="lead">Две роли, две схемы. Менеджер по активным продажам получает за выручку, маржу и собранные деньги. Аккаунт-менеджер получает за удержание клиентов, рост чека и кросс-продажи. Двигайте ползунки: премия пересчитывается сразу, а справа видно, какой шаг сейчас выгоднее всего.</p>
+
+  <div class="tabs" role="tablist" aria-label="Роль менеджера">
+    <button class="tab" role="tab" id="tabSales" aria-selected="true" type="button">Активные продажи</button>
+    <button class="tab" role="tab" id="tabAcc" aria-selected="false" type="button">Аккаунт-менеджер</button>
+  </div>
+
+  <div class="layout">
+    <div class="panel">
+      <p class="step">Входные данные</p>
+      <h2 id="roleTitle"></h2>
+      <p class="role-note" id="roleNote"></p>
+      <div id="fields"></div>
+    </div>
+
+    <div>
+      <div class="panel" aria-live="polite">
+        <p class="step">Премия за месяц</p>
+        <div class="big" id="bonus">0 ₽</div>
+        <div class="sub" id="sub"></div>
+        <div class="wf" id="wf"></div>
+        <div class="verdict" id="verdict"></div>
+        <div class="trap" id="trap" hidden></div>
+      </div>
+      <div class="panel">
+        <p class="step">Рычаги</p>
+        <h2>Что даст каждый шаг</h2>
+        <div id="levers"></div>
+        <details>
+          <summary>Формула и условные ставки</summary>
+          <div id="formula"></div>
+        </details>
+      </div>
+    </div>
+  </div>
+  <p class="note">Зачем так: схема, где выручка, маржа и деньги учитываются вместе, не позволяет «купить» план скидкой и оставить компанию без оплаты. У аккаунт-менеджера другая работа, поэтому и платят за другое. Реальные ставки и пороги подбираются под данные отдела и согласуются с руководством; здесь они приведены только для демонстрации механики.</p>
+</div>
+
+<script>
+var ROLES = {
+  sales: {
+    title: 'Менеджер по активным продажам',
+    note: 'Привлекает новых клиентов и закрывает сделки. Премия складывается из выручки, маржи и дебиторки.',
+    base: 60000,
+    fields: [
+      { id: 'plan', label: 'План выручки', min: 2, max: 30, step: 0.5, def: 10, unit: 'mln' },
+      { id: 'fact', label: 'Факт выручки', min: 0, max: 40, step: 0.1, def: 8.5, unit: 'mln' },
+      { id: 'mplan', label: 'План маржи', min: 10, max: 40, step: 0.5, def: 22, unit: 'pct' },
+      { id: 'mfact', label: 'Факт маржи', min: 5, max: 45, step: 0.5, def: 24, unit: 'pct' },
+      { id: 'ar', label: 'Просроченная дебиторка', min: 0, max: 5, step: 0.1, def: 0.6, unit: 'mln', hint: 'Долг клиентов менеджера сверх допустимого срока.' }
+    ],
+    formula: 'Базовая премия при 100% плана: <code>60 000 ₽</code>.<br>Выручка: при выполнении плана ниже 70% премии нет; 70–100% даёт коэффициент от 0,5 до 1,0; выше плана он растёт на 1,5 за каждую единицу превышения, максимум 1,6.<br>Маржа: каждый процентный пункт выше плана даёт +8%, ниже плана −8%; коэффициент от 0,6 до 1,2.<br>Дебиторка: вычет равен удвоенной доле просрочки в выручке, максимум 30%.<br>Премия = база × коэф. выручки × коэф. маржи × коэф. дебиторки.'
+  },
+  acc: {
+    title: 'Аккаунт-менеджер',
+    note: 'Работает с действующей базой. Премия складывается из удержания клиентов, роста чека и кросс-продаж.',
+    base: 50000,
+    fields: [
+      { id: 'ret', label: 'Клиенты, купившие повторно', min: 30, max: 100, step: 1, def: 74, unit: 'pct', hint: 'План по удержанию: 80%.' },
+      { id: 'chk', label: 'Рост среднего чека к прошлому периоду', min: -20, max: 40, step: 1, def: 5, unit: 'pct' },
+      { id: 'cross', label: 'Клиенты, купившие в 2+ направлениях', min: 0, max: 15, step: 1, def: 2, unit: 'cnt', hint: 'Например, ангары и кровля у одного клиента.' },
+      { id: 'ar', label: 'Просроченная дебиторка', min: 0, max: 5, step: 0.1, def: 0.4, unit: 'mln' },
+      { id: 'rev', label: 'Выручка по базе', min: 1, max: 30, step: 0.5, def: 8, unit: 'mln' }
+    ],
+    formula: 'Базовая премия при выполнении плана: <code>50 000 ₽</code>.<br>Удержание: ниже 60% премии нет; 60–80% даёт коэффициент от 0,5 до 1,0; выше 80% он растёт на 2,5 за каждую единицу, максимум 1,4.<br>Средний чек: каждый +1% роста даёт +2% к премии, каждый −1% даёт −2%; коэффициент от 0,8 до 1,3.<br>Кросс-продажи: каждый клиент в 2+ направлениях даёт +4%, максимум 1,3.<br>Дебиторка: вычет равен удвоенной доле просрочки в выручке, максимум 30%.<br>Премия = база × коэф. удержания × коэф. чека × коэф. кросс-продаж × коэф. дебиторки.'
+  }
+};
+
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+function arK(ar, rev) { return 1 - Math.min(0.3, rev > 0 ? ar / rev * 2 : 0); }
+
+function calcSales(i) {
+  var x = i.plan > 0 ? i.fact / i.plan : 0, kRev;
+  if (x < 0.7) kRev = 0; else if (x <= 1) kRev = 0.5 + (x - 0.7) / 0.3 * 0.5; else kRev = Math.min(1.6, 1 + (x - 1) * 1.5);
+  var kMar = clamp(1 + 0.08 * (i.mfact - i.mplan), 0.6, 1.2), kAr = arK(i.ar, i.fact), b = ROLES.sales.base;
+  return { bonus: Math.round(b * kRev * kMar * kAr), steps: [['База', b], ['Выручка', b * kRev], ['Маржа', b * kRev * kMar], ['Дебиторка', b * kRev * kMar * kAr]], head: 'Выполнение плана: ' + (x * 100).toFixed(0) + '%' };
+}
+function calcAcc(i) {
+  var kRet;
+  if (i.ret < 60) kRet = 0; else if (i.ret <= 80) kRet = 0.5 + (i.ret - 60) / 20 * 0.5; else kRet = Math.min(1.4, 1 + (i.ret - 80) / 100 * 2.5);
+  var kChk = clamp(1 + 0.02 * i.chk, 0.8, 1.3), kX = Math.min(1.3, 1 + 0.04 * i.cross), kAr = arK(i.ar, i.rev), b = ROLES.acc.base;
+  return { bonus: Math.round(b * kRet * kChk * kX * kAr), steps: [['База', b], ['Удержание', b * kRet], ['Средний чек', b * kRet * kChk], ['Кросс-продажи', b * kRet * kChk * kX], ['Дебиторка', b * kRet * kChk * kX * kAr]], head: 'Удержание: ' + i.ret + '% при плане 80%' };
+}
+function calcBonus(role, i) { return role === 'sales' ? calcSales(i) : calcAcc(i); }
+
+var LEVERS = {
+  sales: [
+    { name: 'Закрыть ещё 1 млн выручки', ch: function (i) { return { fact: i.fact + 1 }; } },
+    { name: 'Поднять маржу на 1 п.п.', ch: function (i) { return { mfact: i.mfact + 1 }; } },
+    { name: 'Погасить всю просрочку', ch: function (i) { return { ar: 0 }; } }
+  ],
+  acc: [
+    { name: 'Удержать ещё 5% клиентов', ch: function (i) { return { ret: Math.min(100, i.ret + 5) }; } },
+    { name: 'Поднять средний чек на 5%', ch: function (i) { return { chk: i.chk + 5 }; } },
+    { name: 'Сделать 2 кросс-продажи', ch: function (i) { return { cross: i.cross + 2 }; } },
+    { name: 'Погасить всю просрочку', ch: function (i) { return { ar: 0 }; } }
+  ]
+};
+var TRAP = { name: 'Ловушка: +1,5 млн выручки скидкой, маржа −5 п.п.', ch: function (i) { return { fact: i.fact + 1.5, mfact: i.mfact - 5 }; } };
+
+function withCh(i, ch) { var o = {}, p; for (p in i) o[p] = i[p]; for (p in ch) o[p] = ch[p]; return o; }
+
+if (typeof module !== 'undefined') module.exports = { calcBonus: calcBonus, LEVERS: LEVERS, TRAP: TRAP, withCh: withCh };
+
+if (typeof document !== 'undefined') (function () {
+  var role = 'sales', vals = {}, shown = 0, anim = null, target = 0;
+  function rub(v) { return Math.round(v).toLocaleString('ru-RU').replace(/ /g, ' ') + ' ₽'; }
+  function fmt(v, unit) {
+    if (unit === 'mln') return v.toFixed(1).replace('.', ',') + ' млн';
+    if (unit === 'pct') return v.toFixed(1).replace('.0', '').replace('.', ',') + '%';
+    return String(v);
+  }
+  function buildFields() {
+    var r = ROLES[role], box = document.getElementById('fields'), html = '';
+    document.getElementById('roleTitle').textContent = r.title;
+    document.getElementById('roleNote').textContent = r.note;
+    r.fields.forEach(function (f) {
+      vals[f.id] = f.def;
+      html += '<div class="field"><label for="f_' + f.id + '">' + f.label + ' <output id="o_' + f.id + '"></output></label><input id="f_' + f.id + '" type="range" min="' + f.min + '" max="' + f.max + '" step="' + f.step + '" value="' + f.def + '">' + (f.hint ? '<p class="hint">' + f.hint + '</p>' : '') + '</div>';
+    });
+    box.innerHTML = html;
+    r.fields.forEach(function (f) {
+      document.getElementById('f_' + f.id).addEventListener('input', function (e) { vals[f.id] = +e.target.value; render(); });
+    });
+    document.getElementById('formula').innerHTML = '<p>' + r.formula + '</p>';
+  }
+  function countTo(v) {
+    target = v;
+    if (anim) cancelAnimationFrame(anim);
+    var from = shown, t0 = null;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / 350);
+      shown = from + (target - from) * (1 - Math.pow(1 - p, 3));
+      document.getElementById('bonus').textContent = rub(shown);
+      if (p < 1) anim = requestAnimationFrame(step);
+    }
+    anim = requestAnimationFrame(step);
+  }
+  function signed(d) { return (d > 0 ? '+' : d < 0 ? '−' : '') + rub(Math.abs(d)); }
+  function render() {
+    var r = ROLES[role], res = calcBonus(role, vals);
+    r.fields.forEach(function (f) { document.getElementById('o_' + f.id).textContent = fmt(vals[f.id], f.unit); });
+    countTo(res.bonus);
+    document.getElementById('sub').textContent = res.head + ' · База: ' + rub(r.base);
+    var max = Math.max.apply(null, res.steps.map(function (s) { return s[1]; }).concat([1])), wf = '';
+    res.steps.forEach(function (s) {
+      wf += '<div class="wf-row"><span>' + s[0] + '</span><div class="wf-bar"><i style="width:' + (s[1] / max * 100).toFixed(1) + '%"></i></div><b>' + rub(s[1]) + '</b></div>';
+    });
+    document.getElementById('wf').innerHTML = wf;
+    var levs = LEVERS[role].map(function (l) { return { name: l.name, d: calcBonus(role, withCh(vals, l.ch(vals))).bonus - res.bonus }; });
+    var maxd = Math.max.apply(null, levs.map(function (l) { return Math.abs(l.d); }).concat([1])), lh = '', best = null;
+    levs.forEach(function (l) { if (!best || l.d > best.d) best = l; });
+    levs.slice().sort(function (a, b) { return b.d - a.d; }).forEach(function (l) {
+      lh += '<div class="lev"><div>' + l.name + '<div class="lbar ' + (l.d >= 0 ? 'pos-bar' : 'neg-bar') + '"><i style="width:' + (Math.abs(l.d) / maxd * 100).toFixed(1) + '%"></i></div></div><b class="' + (l.d > 0 ? 'pos' : l.d < 0 ? 'neg' : '') + '">' + signed(l.d) + '</b></div>';
+    });
+    document.getElementById('levers').innerHTML = lh;
+    document.getElementById('verdict').textContent = best && best.d > 0 ? 'Самый выгодный шаг сейчас: «' + best.name + '» (' + signed(best.d) + ').' : 'При текущих данных ни один из шагов не увеличивает премию.';
+    var trap = document.getElementById('trap');
+    if (role === 'sales') {
+      var td = calcBonus('sales', withCh(vals, TRAP.ch(vals))).bonus - res.bonus;
+      trap.hidden = false;
+      trap.innerHTML = '<b>' + TRAP.name + '</b><br>Премия изменится на ' + signed(td) + '. ' + (td < 0 ? 'План «куплен» ценой маржи, и менеджеру это невыгодно.' : 'При таких данных скидка ещё окупается, но запас по марже тает.');
+    } else { trap.hidden = true; }
+  }
+  function setRole(x) {
+    role = x;
+    document.getElementById('tabSales').setAttribute('aria-selected', x === 'sales');
+    document.getElementById('tabAcc').setAttribute('aria-selected', x === 'acc');
+    buildFields(); render();
+  }
+  document.getElementById('tabSales').addEventListener('click', function () { setRole('sales'); });
+  document.getElementById('tabAcc').addEventListener('click', function () { setRole('acc'); });
+  setRole('sales');
+})();
+</script>
+</body>
+</html>
